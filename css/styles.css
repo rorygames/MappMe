@@ -1,0 +1,210 @@
+/*
+
+Mapping Server Styles
+Created by Rory Clark
+rorywebdev.com
+
+*/
+
+*{
+	margin:0;
+	padding:0;
+	font-family:'Duru Sans', Verdana, sans-serif !important;
+}
+
+html,body{
+	background-color:#fff;
+	color:#F86752;
+	width:100%;
+	height:100%;
+	min-width:400px;
+	overflow-x:hidden;
+	font-size:16px;
+}
+
+.fc{
+	background-color:#F86752;
+	color:#fff;
+}
+
+.fc a{
+	color:#fff;
+}
+
+/* Text */
+
+p{
+	margin:0 0 5px 0;
+}
+
+p span{
+	font-weight:bold !important;
+}
+
+h1{
+	font-size:28px;
+	font-weight:bold;
+	padding:5px 0;
+}
+
+h2{
+	font-size:16px;
+	font-weight:bold;
+	padding:5px 0;
+}
+
+ul{
+	padding:0 0 0 20px;
+}
+
+ul li{
+	margin:0 0 2px 0;
+}
+
+a{
+	color:#F86752;
+	text-decoration:underline;
+}
+
+/* Inputs */
+
+input[type="submit"],input[type="button"]{
+	height:40px;
+	border:4px solid #F86752;
+	border-radius:4px;
+	outline:none;
+	padding:0 5px;
+	background-color:inherit;
+	color:inherit;
+	font-size:inherit;
+	cursor:pointer;
+}
+
+input[type="submit"]:hover,input[type="button"]:hover,input[type="submit"]:active,input[type="button"]:active,#mm-n-close:hover,#mm-n-close:active{
+	background-color:#F86752;
+	color:#fff;
+}
+
+input[type="text"],input[type="password"]{
+	height:40px;
+	border:4px solid #F86752;
+	border-radius:4px;
+	outline:none;
+	padding:0 5px;
+	background-color:inherit;
+	font-size:inherit;
+	outline:none;
+	color:inherit;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+/* Notifications */
+
+#mm-notification{
+	background-color:#fff;
+	position:absolute;
+	top:0;
+	right:-300px;
+	width:296px;
+	height:100%;
+	border-left:4px solid #F86752;
+	transition:right 0.3s ease;
+	-webkit-transition:right 0.3s ease;
+	-moz-transition:right 0.3s ease;
+	-ms-transition:right 0.3s ease;
+	-o-transition:right 0.3s ease;
+}
+
+#mm-notification.open{
+	right:0;
+}
+
+#mm-n-title{
+	width:296px;
+	height:50px;
+	line-height:50px;
+	display:block;
+	font-size:28px;
+	text-align:center;
+}
+
+#mm-n-rs{
+	display:block;
+	position:absolute;
+	top:55px;
+	left:5px;
+	right:5px;
+	bottom:50px;
+	width:286px;
+	overflow-y:auto;
+}
+
+#mm-n-rs.load{
+	top:125px;
+}
+
+#mm-n-loading-rs{
+	width:296px;
+	height:45px;
+	padding:25px 0 0 0;
+	display:none;
+}
+
+#mm-n-loading-rs.open{
+	display:block;
+}
+
+#mm-n-loading{
+	display:block;
+	margin:0 auto;
+	width:30px;
+	height:45px;
+	transform-origin: 15px 15px;
+	-webkit-transform-origin: 15px 15px;
+	-moz-transform-origin: 15px 15px;
+	-ms-transform-origin: 15px 15px;
+	-o-transform-origin: 15px 15px;
+	background-image:url('../img/loading.png');
+	background-repeat:no-repeat;
+	animation:spinLoad 1s infinite ease;
+	-webkit-animation:spinLoad 1s infinite ease;
+	-moz-animation:spinLoad 1s infinite ease;
+	-ms-animation:spinLoad 1s infinite ease;
+	-o-animation:spinLoad 1s infinite ease;
+}
+
+@keyframes spinLoad
+{
+0%   {transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);-o-transform:rotate(0deg);}
+75%  {transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);-o-transform:rotate(360deg);}
+100%   {transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);-o-transform:rotate(360deg);}
+}
+
+@-webkit-keyframes spinLoad
+{
+0%   {-webkit-transform:rotate(0deg);}
+75%  {-webkit-transform:rotate(360deg);}
+100%   {-webkit-transform:rotate(360deg);}
+}
+
+#mm-n-close{
+	display:none;
+	position:absolute;
+	width: 286px;
+	border: 4px solid #F86752;
+	border-radius: 4px;
+	padding: 0 5px;
+	left:5px;
+	bottom:5px;
+	cursor:pointer;
+}
+
+#mm-n-close.open{
+	display:block;
+}
+
+#mm-n-close:active{
+	bottom:3px;
+}

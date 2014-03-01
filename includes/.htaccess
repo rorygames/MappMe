@@ -1,0 +1,13 @@
+# MappMe Includes
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+# Stops people from viewing include files
+# Add other file extensions if you want to add extras
+<Files "*.php">
+order allow,deny
+deny from all
+</Files>
+# Hides index files
+Options All -Indexes

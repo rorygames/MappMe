@@ -1,0 +1,1 @@
+<?php $mm_db = array("server" => "localhost","database" => "mappme","prefix" => "mm-","standard" => array("usn" => "mm-tIUlOy","psw" => "ZcZrOAHJRBbg5Q9mXpOUtSTd4mC8Ir"),"admin" => array("usn" => "mm-a-H1UdmI","psw" => "AhjxeIMnP8twOCCRbLWInFEWoVtSHC")); ?>

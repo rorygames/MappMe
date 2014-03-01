@@ -1,0 +1,107 @@
+/* Login Screen */
+
+#top-splash{
+	position:relative;
+	height:60%;
+	width:100%;
+}
+
+#top-splash h1{
+	position:absolute;
+	width:100%;
+	text-align:center;
+	font-size:28px;
+	font-weight:normal;
+	bottom:5px;
+	line-height:28px;
+	height:28px;
+}
+
+#ts-logo{
+	position:absolute;
+	width:68px;
+	height:102px;
+	display:block;
+	left:50%;
+	bottom:82px;
+	opacity:0;
+	margin-left:-34px;
+	background-image:url('../img/splash.png');
+	transition:bottom .5s ease,opacity .5s ease;
+	-webkit-transition:bottom .5s ease,opacity .5s ease;
+	-moz-transition:bottom .5s ease,opacity .5s ease;
+	-o-transition:bottom .5s ease,opacity .5s ease;
+	-ms-transition:bottom .5s ease,opacity .5s ease;
+}
+
+#ts-logo.open{
+	bottom:42px;
+	opacity:1;
+}
+
+#bottom-splash{
+	position:relative;
+	height:40%;
+	overflow:hidden;
+	min-width:400px;
+}
+
+#bottom-splash p{
+	width:100%;
+	text-align:center;
+	font-size:16px;
+	padding:5px 0;
+}
+
+#bottom-splash p#bs-pw{
+	padding:42px 0 5px 0;
+}
+
+#bottom-splash #username,#bottom-splash #password{
+	width:300px;
+	height:38px;
+	line-height:38px;
+	padding:0 5px;
+	border:4px solid #F86752;
+	border-radius:4px;
+	position:absolute;
+	left:50%;
+	margin-left:-150px;
+}
+
+#bottom-splash #submit{
+	width:300px;
+	position:absolute;
+	left:50%;
+	margin: 43px 0 0 -150px;
+}
+
+#bottom-splash #submit:active{
+	margin:45px 0 0 -150px;
+}
+
+#bottom-splash #forgot{
+	width:300px;
+	position:absolute;
+	left:50%;
+	margin: 88px 0 0 -150px;
+}
+
+#bottom-splash #forgot:active{
+	margin:90px 0 0 -150px;
+}
+
+#user-splash{
+	display:block;
+	min-width:400px;
+}
+
+@media screen and (max-height:600px){
+	#top-splash{
+		height:40%;
+	}
+
+	#bottom-splash{
+		height:60%;
+	}
+}

@@ -1,0 +1,54 @@
+/*
+
+Mapping Server Styles - Setup
+Created by Rory Clark
+rorywebdev.com
+
+*/
+
+#top-setup{
+	height:50px;
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	text-align:center;
+	line-height:50px;
+	font-size:28px;
+	min-width:400px;
+}
+
+#middle-setup{
+	width:100%;
+	max-width:1000px;
+	min-width:400px;
+	margin:0 auto;
+	padding:60px 0 0 0;
+}
+
+.setup-input-text{
+	width:100%;
+	max-width:1000px;
+	min-width:400px;
+	height:38px;
+	line-height:38px;
+	border:4px solid #F86752;
+	border-radius:4px;
+	padding:0 5px;
+}
+
+.setup-button{
+	margin:10px 0 0 0;
+}
+
+.setup-button:active{
+	margin:12px 0 0 0;
+}
+
+.s-block.open{
+	display:block;
+}
+
+.s-block{
+	display:none;
+}
