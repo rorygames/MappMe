@@ -153,19 +153,19 @@ class Setup{
 			$am_create->execute();
 			$am_create=null;
 
-			// Set base document path
-			$am_bp = $db_am->prepare('INSERT INTO `'.$db_pre.'config`(type,value) VALUES(:ty,:va)');
-			$am_bp->bindValue(':ty','BASE_PATH',PDO::PARAM_STR);
-			$am_bp->bindValue(':va',$base_path,PDO::PARAM_STR);
-			$am_bp->execute();
-			$am_bp=null;
-
 			// Set base public url
 			$am_bu = $db_am->prepare('INSERT INTO `'.$db_pre.'config`(type,value) VALUES(:ty,:va)');
 			$am_bu->bindValue(':ty','SITE_URL',PDO::PARAM_STR);
 			$am_bu->bindValue(':va',$base_url,PDO::PARAM_STR);
 			$am_bu->execute();
 			$am_bu=null;
+
+			// Set base document path
+			$am_bp = $db_am->prepare('INSERT INTO `'.$db_pre.'config`(type,value) VALUES(:ty,:va)');
+			$am_bp->bindValue(':ty','BASE_PATH',PDO::PARAM_STR);
+			$am_bp->bindValue(':va',$base_path,PDO::PARAM_STR);
+			$am_bp->execute();
+			$am_bp=null;
 
 			$db_am=null;
 		} catch(PDOException $ex){
@@ -180,7 +180,7 @@ class Setup{
 		}
 
 		// Write salt to file
-		file_put_contents('../includes/conn/site.php', '<?php $mm_site = array('."'".'salt'."'".' => '."'".$this->site_salt.."'".'); ?>');
+		file_put_contents('../includes/conn/site.php', "<?php ".'$mm_site'." = array('salt' => '".$this->site_salt."'); ?>");
 
 		echo '0';
 	}

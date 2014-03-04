@@ -64,6 +64,6 @@ try{
 // Please do not remove this! Thank you!
 ?>
 <div class="mm-rwd-i-rs">
-<p class="mm-rwd-info">MappMe created by <a href="http://rorywebdev.com">Rory Clark</a> 2014.</p>
-<p class="mm-rwd-info">Open source software licensed under <a href="https://github.com/rorywebdev/MappMe/blob/master/LICENSE">MIT</a>.</p>
+<p class="mm-rwd-info">MappMe created by <a href="http://rorywebdev.com" target="_blank">Rory Clark</a> 2014.</p>
+<p class="mm-rwd-info">Open source software licensed under <a href="https://github.com/rorywebdev/MappMe/blob/master/LICENSE" target="_blank">MIT</a>.</p>
 </div>

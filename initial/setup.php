@@ -35,7 +35,7 @@ switch($stage){
 		$ampsw2 = $_POST['adminpsw2'];
 		$surl = $_POST['surl'];
 		$burl = $_POST['burl'];
-		$mm_setup->createUser($mm_db['database'],$mm_db['admin']['usn'],$mm_db['admin']['psw'],$mm_db['prefix'],$mm_db['server'],$amusn,$ampsw);
+		$mm_setup->createUser($mm_db['database'],$mm_db['admin']['usn'],$mm_db['admin']['psw'],$mm_db['prefix'],$mm_db['server'],$amusn,$ampsw,$surl,$burl);
 	break;
 }
 

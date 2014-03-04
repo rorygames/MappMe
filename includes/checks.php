@@ -1,12 +1,5 @@
 <?php
 
-// Make sure the system is installed
-if(!file_exists(getcwd().'/includes/conn/conn.php')){
-	if(!file_exists(getcwd().'/includes/conn/site.php')){
-		header( 'Location: setup' ) ;
-	}
-}
-
 // Is the user logged in
 
 function isLoggedIn()
@@ -29,6 +22,7 @@ if($page_settings['type'] == 'page'){
 		exit();
 	}
 }
+
 if($page_settings['type'] == 'map'){
 	// If the user hasn't logged in then redirect them
 	if(!isLoggedIn()){
@@ -61,5 +55,4 @@ function loadUser(){
 		exit();
 	}
 }
-
 ?>

@@ -274,7 +274,7 @@ class MappMe{
 		echo '<p>You will need your access code (from your mobile device) incase you want to change your password or if you forget it.</p>'."\n";
 		echo '<br>'."\n";
 		echo '<h1 class="c-h1-i">Your receive URL is</h1>'."\n";
-		echo '<h1 class="c-h1-i">'.siteUrl().'/receive</h1>'."\n";
+		echo '<h1 class="c-h1-i">'.siteUrl().'</h1>'."\n";
 		echo '<p>Enter the URL above into your <span>Receive URL</span> box on your phone.</p>'."\n";
 		echo '<p>Once you&#39;ve entered your code into your device hit the button below and MappMe will save your details.</p>'."\n";
 		echo '<p>You can change your password on the next page.</p>'."\n";
