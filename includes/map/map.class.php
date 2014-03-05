@@ -38,7 +38,7 @@ class MappMe{
 	private function plotMap(){
 		echo "\n".'<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key='.grabSetting('API_KEY').'&sensor=false"></script>' . "\n";
 		echo '<script type="text/javascript" id="MappMeJS">'."\n";
-		echo 'var MappMe,MM_Image,MM_Options,MM_Markers = new Array(),MM_Marker;'."\n";
+		echo 'var MappMe,MM_Image,MM_Options,MM_Markers = new Array(),MM_Marker,MM_iw,MM_Geo,MM_GeoRes,MM_GLL;'."\n";
 		$this->getMySettings();
 		// Set the marker image
 		echo 'MM_Image = "'.$this->df_mm['img'].'";'."\n";
@@ -55,7 +55,9 @@ class MappMe{
 		// End Options
 		echo '}'."\n";
 		// Set the MappMe variable
-		echo 'MappMe = new google.maps.Map(document.getElementById("map-canvas"),MM_Options);'."\n";		
+		echo 'MappMe = new google.maps.Map(document.getElementById("map-canvas"),MM_Options);'."\n";
+		// Set the MappMe variable
+		echo 'MM_Geo = new google.maps.Geocoder();'."\n";
 		// Get markers
 		$this->getMarkers();
 		// End Map Initialiser
@@ -152,6 +154,19 @@ class MappMe{
 		$rounds = 0;
 		$mm_item_str = "";
 		echo 'MM_iw = new google.maps.InfoWindow({content: ""});';
+		echo 'function geoDecode(i){MM_GLL = new google.maps.LatLng(MM_Items[i][1],MM_Items[i][2]);MM_Geo.geocode({"latLng": MM_GLL}, function (results, status){
+				if(status == google.maps.GeocoderStatus.OK){
+					if(results[0]){
+						MM_iw.setContent("<p><span>"+results[0].formatted_address+"</span></p>';
+						if(!in_array('NO_COMMENTS',$this->my_set)){echo '<p><span>"+MM_Items[i][3]+"</span></p>';}
+						if(!in_array('NO_TIME',$this->my_set)){echo '<p>"+MM_Items[i][0]+"</p>';}
+						if(!in_array('NO_LAT',$this->my_set)){echo '<p><span>Lat:</span> "+MM_Items[i][1]+"</p>';}
+						if(!in_array('NO_LONG',$this->my_set)){echo '<p><span>Long:</span> "+MM_Items[i][2]+"</p>';} 
+						echo '");
+					}
+				}
+			});
+	}'."\n";
 		echo 'MM_Items = [';
 		while($rounds < $counter){
 			if(!in_array('NO_TIME',$this->my_set)){
@@ -173,13 +188,19 @@ class MappMe{
 			echo '});
 			MM_Markers.push(MM_Marker);
 			google.maps.event.addListener(MM_Marker, "click", (function(MM_Marker, i) {return function(){
-				MappMe.panTo(MM_Marker.getPosition());
-				MM_iw.setContent("';
-		if(!in_array('NO_COMMENTS',$this->my_set)){echo '<p><span>"+MM_Items[i][3]+"</span></p>';}
-		if(!in_array('NO_TIME',$this->my_set)){echo '<p>"+MM_Items[i][0]+"</p>';}
-		if(!in_array('NO_LAT',$this->my_set)){echo '<p><span>Lat:</span> "+MM_Items[i][1]+"</p>';}
-		if(!in_array('NO_LONG',$this->my_set)){echo '<p><span>Long:</span> "+MM_Items[i][2]+"</p>';} 
-		echo '");MM_iw.open(MappMe, MM_Marker);}})(MM_Marker, i));}';
+				MappMe.panTo(MM_Marker.getPosition());';
+				if(!in_array('NO_GEOCODE',$this->my_set)){
+					echo 'geoDecode(i);';
+				} else {
+					echo 'MM_iw.setContent("';
+					if(!in_array('NO_COMMENTS',$this->my_set)){echo '<p><span>"+MM_Items[i][3]+"</span></p>';}
+					if(!in_array('NO_TIME',$this->my_set)){echo '<p>"+MM_Items[i][0]+"</p>';}
+					if(!in_array('NO_LAT',$this->my_set)){echo '<p><span>Lat:</span> "+MM_Items[i][1]+"</p>';}
+					if(!in_array('NO_LONG',$this->my_set)){echo '<p><span>Long:</span> "+MM_Items[i][2]+"</p>';} 
+					echo '");';
+				}
+				echo 'MM_iw.open(MappMe, MM_Marker);';
+		echo '}})(MM_Marker, i));}';
 
 	}
 
