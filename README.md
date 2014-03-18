@@ -2,17 +2,21 @@ MappMe
 ======
 
 Mapp (Mapping) Me (Myself)
+
 Open source personal mapping software using Google Maps.
 
 Information
 ======
 MappMe is designed and created to be personal mapping software that runs on your own server. It only ever communicates with your specified server and the data never leaves it, you have full control of everything. Data is sent from your mobile device to the server, leaveraging the GPS location information from it.
+
 You can customise and edit everything about it from the access code length to the settings that users can change.
 
 Mobile Application - MappMe Transmitter
 ======
 The mobile application is availabe from the Google Play store for Android devices.
+
 https://play.google.com/store/apps/details?id=com.rorywebdev.MappMe
+
 It requires Android 1.6+ and uses PhoneGap. The app itself has only been tested on devices running Android 4.0 and higher so there may be issues with lower devices.
 
 Requirements
@@ -23,6 +27,7 @@ There are a few requirements for MappMe to work correctly on your server, they a
 - Internet connected (required for sending mapping data from the mobile client)
 
 You will also need a Google Developers API key for the usage of the map on the server.
+
 They can be easily obtained by following this tutorial by Google:
 https://developers.google.com/maps/documentation/javascript/tutorial#api_key
 
