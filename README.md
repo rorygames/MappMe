@@ -17,7 +17,7 @@ The mobile application is availabe from the Google Play store for Android device
 
 https://play.google.com/store/apps/details?id=com.rorywebdev.MappMe
 
-It requires Android 1.6+ and uses PhoneGap. The app itself has only been tested on devices running Android 4.0 and higher so there may be issues with lower devices.
+It requires Android 2.3.3+ and uses PhoneGap. The app itself has only been tested on devices running Android 4.0 and higher so there may be issues with lower devices.
 
 Requirements
 ======
