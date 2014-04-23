@@ -1,5 +1,7 @@
 <?php
 
+$mm_quick_page = true;
+
 // Setup extra items (hard coded URL and directory)
 function curPageURL() {
 	$pageURL = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://' : 'https://';
@@ -17,9 +19,10 @@ $thispage = $thisURL['host'] . substr($thisURL['path'],0,-5);
 
 $page_settings = array(
 	'title' => 'Setup',
-	'type' => 'quick',
+	'type' => 'page',
 	'css' => array(
 		'duru',
+		'fa',
 		'styles',
 		'setup'
 		),
@@ -32,7 +35,7 @@ $page_settings = array(
 
 require_once(getcwd().'/includes/init.php');
 
-require_once(getcwd().'/includes/layout/page.class.php');
+require_once(getcwd().'includes/layout/page.class.php');
 
 $page = new Page($page_settings);
 

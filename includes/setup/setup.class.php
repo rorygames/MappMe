@@ -71,6 +71,9 @@ class Setup{
 			$users = $db_build->prepare("CREATE TABLE IF NOT EXISTS `".$dbprefix."users` (`id` int(11) NOT NULL AUTO_INCREMENT, `username` text COLLATE utf8_unicode_ci NOT NULL, `password` text COLLATE utf8_unicode_ci NOT NULL, `access_code` varchar(8) COLLATE utf8_unicode_ci NOT NULL DEFAULT '', `permissions` tinyint(1) NOT NULL DEFAULT '0', `zoom` tinyint(2) NOT NULL DEFAULT '2', `starting_lat` text COLLATE utf8_unicode_ci NOT NULL, `starting_long` text COLLATE utf8_unicode_ci NOT NULL, `firstlog` tinyint(1) NOT NULL DEFAULT '1', `map_settings` text COLLATE utf8_unicode_ci NOT NULL, PRIMARY KEY (`id`), UNIQUE KEY `id` (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;");
 			$users->execute();
 			$users=null;
+			$logs = $db_build->prepare("CREATE TABLE IF NOT EXISTS `".$dbprefix."logs` (`id` int(11) NOT NULL AUTO_INCREMENT, `username` text COLLATE utf8_unicode_ci NOT NULL, `ip` text COLLATE utf8_unicode_ci NOT NULL, `browser` text COLLATE utf8_unicode_ci NOT NULL, `os` text COLLATE utf8_unicode_ci NOT NULL, PRIMARY KEY (`id`), UNIQUE KEY `id` (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;");
+			$logs->execute();
+			$logs=null;
 
 			// Create the standard user and give them limited permissions, this will be used for receiving data and for standard user access.
 			$this->mm_1_usn = $this->createRandom(6);
@@ -93,6 +96,10 @@ class Setup{
 			$create1_config->execute();
 			$create1_config=null;
 
+			$create1_logs = $db_build->prepare("GRANT INSERT ON `".$dbname."`.`".$dbprefix."logs` TO  '".$this->mm_1_usn."'@'".$server."';");
+			$create1_logs->execute();
+			$create1_logs=null;
+
 			// Create the administrator user. This will be only available to the administrator when logged in. Allows for extra items such as delete.
 			$this->mm_2_usn = $this->createRandom(6);
 			// Prefix admin username to allow easy identification.
@@ -113,6 +120,10 @@ class Setup{
 			$create2_config = $db_build->prepare("GRANT SELECT , INSERT , UPDATE , DELETE ON `".$dbname."`.`".$dbprefix."config` TO  '".$this->mm_2_usn."'@'".$server."';");
 			$create2_config->execute();
 			$create2_config=null;
+
+			$create2_logs = $db_build->prepare("GRANT SELECT , INSERT , DELETE ON `".$dbname."`.`".$dbprefix."logs` TO  '".$this->mm_2_usn."'@'".$server."';");
+			$create2_logs->execute();
+			$create2_logs=null;
 
 			// Delete super user, no longer needed once databases have been created.
 			$revoke_user = $db_build->prepare("REVOKE ALL PRIVILEGES, GRANT OPTION FROM  '".$dbusn."'@'".$server."';");

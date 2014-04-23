@@ -1,5 +1,7 @@
 <?php
 
+$mm_quick_page = true;
+
 // Setup extra items (hard coded URL and directory)
 function curPageURL() {
 	$pageURL = @( $_SERVER["HTTPS"] != 'on' ) ? 'http://' : 'https://';
@@ -17,9 +19,10 @@ $thispage = $thisURL['host'] . substr($thisURL['path'],0,-5);
 
 $page_settings = array(
 	'title' => 'Setup',
-	'type' => 'quick',
+	'type' => 'page',
 	'css' => array(
 		'duru',
+		'fa',
 		'styles',
 		'setup'
 		),
@@ -32,7 +35,7 @@ $page_settings = array(
 
 require_once(getcwd().'/includes/init.php');
 
-require_once(getcwd().'/includes/layout/page.class.php');
+require_once('includes/layout/page.class.php');
 
 $page = new Page($page_settings);
 
@@ -108,7 +111,7 @@ $page->finHead();
 		<p>You will now be able to log into the system and start Mapping.</p>
 		<h1>Make sure to remove "setup.php" and the "initial" folder from your server now.</h1>
 		<p>Leaving these files on the root of MappMe may lead to security issues on your system. You have been warned.</p>
-		<p>A backup of these installation files can be found under the <span>includes/setup/_backup/</span> folder. These are included for future repairs or re-installs.</p>
+		<p>A backup of these installation files can be found under the <span>includes/setup/backup/</span> folder. These are included for future repairs or re-installs.</p>
 		<p><span>Make sure you have the MappMe Transmitter application installed on your phone before logging in, you will when you log into your account.</span></p>
 		<input type="button" id="finish-setup" class="setup-button" value="Log into MappMe">
 	</div>

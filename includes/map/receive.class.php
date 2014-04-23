@@ -39,7 +39,7 @@ class Receiver{
 			$ac_rows = $ac_check->rowCount();
 			if($ac_rows == 0){
 				$resp_n=1;
-				$resp_t = "Invalid access code.";
+				$resp_t = "Invalid access code";
 			} else {
 				// If the access code is found check to see if it has been activated (ac_type)
 				$ac_res = $ac_check->fetch(PDO::FETCH_ASSOC);
@@ -47,11 +47,11 @@ class Receiver{
 				// 1 means the user has not yet finished their personal MappMe setup. They need to login.
 				if($ac_res['firstlog'] == 1){
 					$resp_n=1;
-					$resp_t = "Your account has not been setup yet. Please sign into MappMe before trying to use this app.";
+					$resp_t = "Please log into MappMe before trying to use this app.";
 				} else if($ac_res['access_code'] != $this->access_code){
 					// Simply an invalid access code
 					$resp_n=1;
-					$resp_t = "Invalid access code.";
+					$resp_t = "Invalid access code";
 				}
 				// Dont respond with anything if success
 			}

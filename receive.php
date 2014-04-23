@@ -10,7 +10,7 @@ if(!file_exists(getcwd().'/includes/conn/conn.php')){
 
 // Latitude, longitude, comment, access code. Time, username, etc are handled by the server.
 if(!isset($_POST['lat'],$_POST['long'],$_POST['com'],$_POST['ac'])) {
-	echo '1Missing required variables. Please try again.';
+	echo '1Missing variables';
 	exit;
 }
 
@@ -25,7 +25,7 @@ $r_data = array(
 // You can change this to fit your own system but remember to change the access code generation to match.
 // Generation can be found in includes (map.class.php) and load (set.access.php)
 if(strlen($r_data['ac']) != 8){
-	echo '1Invalid access code.';
+	echo '1Invalid access code';
 	exit;
 }
 

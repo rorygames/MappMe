@@ -34,6 +34,21 @@ if($page_settings['type'] == 'map'){
 	}
 }
 
+if($page_settings['type'] == 'admin'){
+	// If the user hasn't logged in then redirect them
+	if(!isLoggedIn()){
+		header('Location: '.siteUrl());
+	    exit();
+	} else {
+		// Load the user settings if they are logged in
+		loadUser();
+		if($user_settings['per'] != 2){
+			header('Location: '.siteUrl());
+	   		exit();
+		}
+	}
+}
+
 function loadUser(){
 	global $user_settings,$mm_db;
 	try{

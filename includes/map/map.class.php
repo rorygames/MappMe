@@ -230,6 +230,9 @@ class MappMe{
 		echo '<div id="title-buttons">'."\n";
 		echo '<a href="'.siteUrl().'logout">Log out</a>'."\n";
 		echo '<a id="me-settings">Settings</a>'."\n";
+		if($this->us['per'] == 2){
+			echo '<a id="mm-a-dash" href="dashboard">Dashboard</a>'."\n";
+		}
 		echo '</div>'."\n";
 		echo '</div>'."\n";
 		echo '</div>'."\n";
