@@ -118,10 +118,6 @@ rorywebdev.com
 		width:50%;
 	}
 
-}
-
-@media screen and (max-width:600px){
-
 	.stat-box{
 		height:480px;
 	}

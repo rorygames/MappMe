@@ -40,8 +40,9 @@ class Dashboard{
 	}
 
 	private function addStats(){
-		$this->markerStats();
+		$this->loginStats();
 		$this->userCount();
+		$this->markerStats();		
 		$this->userSettingInfo();
 	}
 
@@ -79,12 +80,34 @@ class Dashboard{
 		echo '</div>'."\n";
 	}
 
+	private function loginStats(){
+		try{
+			$getLogins = $this->pdo->prepare('SELECT * FROM `'.$this->db['prefix'].'logs` ORDER BY `id` DESC');
+			$getLogins->execute();
+			$loginRows = $getLogins->rowCount();
+			$loginData = $getLogins->fetchAll();
+			$loginArr = array();
+			$larrC = 0;
+			while($larrC < 5){
+				$thisRow = $loginData[$larrC]['username'].' - '.$loginData[$larrC]['ip'].' - '.$loginData[$larrC]['os'].' - '.$loginData[$larrC]['browser'];
+				$loginArr[$larrC] = $thisRow;
+				$larrC++;
+			}
+			$this->insertBox('Logins','5 Most Recent Logins (User - IP - OS - Browser)',number_format($loginRows),'Total Logins',$loginArr);
+			$getLogins = null;
+			$loginArr = null;
+			$loginData = null;
+		} catch(PDOException $ex){
+			echo $ex;
+			exit;
+		}
+	}
+
 	private function markerStats(){
 		try{
 			$getMarkers = $this->pdo->prepare('SELECT * FROM `'.$this->db['prefix'].'data` ORDER BY `id` DESC');
 			$getMarkers->execute();
 			$gMRows = $getMarkers->rowCount();
-			$gMRows = number_format($gMRows);
 			$gMRes = $getMarkers->fetchAll();
 			$gMArr = array();
 			$arrC = 0;
@@ -93,7 +116,7 @@ class Dashboard{
 				$gMArr[$arrC] = $thisRow;
 				$arrC++;
 			}
-			$this->insertBox('Map Markers','5 Most Recent Markers (Date/Time - User)',$gMRows,'Plotted Markers',$gMArr);
+			$this->insertBox('Map Markers','5 Most Recent Markers (Date/Time - User)',number_format($gMRows),'Plotted Markers',$gMArr);
 			$getMarkers = null;
 			$gMRows = null;
 			$gMArr = null;
@@ -131,29 +154,29 @@ class Dashboard{
 		try{
 			$statArr = array();
 			$getPolys = $this->pdo->prepare('SELECT * FROM `'.$this->db['prefix'].'users` WHERE map_settings LIKE :ply');
-			$getPolys->bindValue(':ply','%"POLY_LINES"%');
+			$getPolys->bindValue(':ply','%"POLY_LINES"%',PDO::PARAM_STR);
 			$getPolys->execute();
 			$theseRows = $getPolys->rowCount();
 			$statArr[0]['val'] = number_format($theseRows);
 			$statArr[0]['desc'] = 'Using Polylines';
 			$getPolys = null;
 			$getCom = $this->pdo->prepare('SELECT * FROM `'.$this->db['prefix'].'users` WHERE map_settings LIKE :gct');
-			$getCom->bindValue(':gct','%"NO_COMMENTS"%');
+			$getCom->bindValue(':gct','%"NO_COMMENTS"%',PDO::PARAM_STR);
 			$getCom->execute();
 			$theseRows = $getCom->rowCount();
 			$statArr[1]['val'] = number_format($theseRows);
 			$statArr[1]['desc'] = 'Hiding Comments';
 			$getCom = null;
 			$getTimes = $this->pdo->prepare('SELECT * FROM `'.$this->db['prefix'].'users` WHERE map_settings LIKE :gti');
-			$getTimes->bindValue(':gti','%"NO_TIME"%');
+			$getTimes->bindValue(':gti','%"NO_TIME"%',PDO::PARAM_STR);
 			$getTimes->execute();
 			$theseRows = $getTimes->rowCount();
 			$statArr[2]['val'] = number_format($theseRows);
 			$statArr[2]['desc'] = 'Hiding Times';
 			$getTimes = null;
 			$getLts = $this->pdo->prepare('SELECT * FROM `'.$this->db['prefix'].'users` WHERE map_settings LIKE :gtlo OR map_settings LIKE :gtla');
-			$getLts->bindValue(':gtlo','%"NO_LONG"%');
-			$getLts->bindValue(':gtla','%"NO_LAT"%');
+			$getLts->bindValue(':gtlo','%"NO_LONG"%',PDO::PARAM_STR);
+			$getLts->bindValue(':gtla','%"NO_LAT"%',PDO::PARAM_STR);
 			$getLts->execute();
 			$theseRows = $getLts->rowCount();
 			$statArr[3]['val'] = number_format($theseRows);

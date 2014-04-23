@@ -1,17 +1,17 @@
 <?php
 
 $page_settings = array(
-  'title' => 'Dashboard',
-  'type' => 'admin',
-  'css' => array(
-    'duru',
-    'styles',
-    'dash'
-    ),
-  'js' => array(
-    'jquery',
-    'notification'
-    )
+	'title' => 'Dashboard',
+	'type' => 'admin',
+	'css' => array(
+		'duru',
+		'styles',
+		'dash'
+		),
+	'js' => array(
+		'jquery',
+		'notification'
+		)
 );
 
 require_once(getcwd().'/includes/init.php');
