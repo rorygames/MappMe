@@ -71,7 +71,7 @@ class Setup{
 			$users = $db_build->prepare("CREATE TABLE IF NOT EXISTS `".$dbprefix."users` (`id` int(11) NOT NULL AUTO_INCREMENT, `username` text COLLATE utf8_unicode_ci NOT NULL, `password` text COLLATE utf8_unicode_ci NOT NULL, `access_code` varchar(8) COLLATE utf8_unicode_ci NOT NULL DEFAULT '', `permissions` tinyint(1) NOT NULL DEFAULT '0', `zoom` tinyint(2) NOT NULL DEFAULT '2', `starting_lat` text COLLATE utf8_unicode_ci NOT NULL, `starting_long` text COLLATE utf8_unicode_ci NOT NULL, `firstlog` tinyint(1) NOT NULL DEFAULT '1', `map_settings` text COLLATE utf8_unicode_ci NOT NULL, PRIMARY KEY (`id`), UNIQUE KEY `id` (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;");
 			$users->execute();
 			$users=null;
-			$logs = $db_build->prepare("CREATE TABLE IF NOT EXISTS `".$dbprefix."logs` (`id` int(11) NOT NULL AUTO_INCREMENT, `username` text COLLATE utf8_unicode_ci NOT NULL, `ip` text COLLATE utf8_unicode_ci NOT NULL, `browser` text COLLATE utf8_unicode_ci NOT NULL, `os` text COLLATE utf8_unicode_ci NOT NULL, PRIMARY KEY (`id`), UNIQUE KEY `id` (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;");
+			$logs = $db_build->prepare("CREATE TABLE IF NOT EXISTS `".$dbprefix."logs` (`id` int(11) NOT NULL AUTO_INCREMENT, `type` text COLLATE utf8_unicode_ci NOT NULL, `username` text COLLATE utf8_unicode_ci NOT NULL, `ip` text COLLATE utf8_unicode_ci NOT NULL, `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, `browser` text COLLATE utf8_unicode_ci NOT NULL, `os` text COLLATE utf8_unicode_ci NOT NULL, PRIMARY KEY (`id`), UNIQUE KEY `id` (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;");
 			$logs->execute();
 			$logs=null;
 

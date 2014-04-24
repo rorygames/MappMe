@@ -119,16 +119,35 @@ rorywebdev.com
 	}
 
 	.stat-box{
-		height:480px;
+		height:580px;
 	}
 
-	.left-stat,.right-stat{
-		height:50%;
+	.left-stat{
+		height:30%;
+		width:100%;
+	}
+
+	.ls-top{
+		height:125px;
+		line-height:159px;
+	}
+
+	.right-stat{
+		height:70%;
 		width:100%;
 	}
 
 	.right-stat .ri-rs{
 		padding:0 10px;
+	}
+
+	.right-stat h2{
+		height:50px;
+	}
+
+	.right-stat .rs-row{
+		height:60px;
+		line-height:30px;
 	}
 
 }

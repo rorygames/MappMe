@@ -89,7 +89,8 @@ class Login{
 
 	private function createSession(){
 		try{
-			$logUser = $this->pdo->prepare('INSERT INTO `'.$this->db_pre.'logs`(username,ip,browser,os) VALUES(:usn,:ip,:brows,:os)');
+			$logUser = $this->pdo->prepare('INSERT INTO `'.$this->db_pre.'logs`(type,username,ip,browser,os) VALUES(:typ,:usn,:ip,:brows,:os)');
+			$logUser->bindValue(':typ','login',PDO::PARAM_STR);
 			$logUser->bindValue(':usn',$this->username,PDO::PARAM_STR);
 			$logUser->bindValue(':ip',$this->ip,PDO::PARAM_STR);
 			$logUser->bindValue(':brows',$this->getBrowser(),PDO::PARAM_STR);

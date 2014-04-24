@@ -82,18 +82,19 @@ class Dashboard{
 
 	private function loginStats(){
 		try{
-			$getLogins = $this->pdo->prepare('SELECT * FROM `'.$this->db['prefix'].'logs` ORDER BY `id` DESC');
+			$getLogins = $this->pdo->prepare('SELECT * FROM `'.$this->db['prefix'].'logs` WHERE `type` = :lgn ORDER BY `id` DESC');
+			$getLogins->bindValue(':lgn','login',PDO::PARAM_STR);
 			$getLogins->execute();
 			$loginRows = $getLogins->rowCount();
 			$loginData = $getLogins->fetchAll();
 			$loginArr = array();
 			$larrC = 0;
 			while($larrC < 5){
-				$thisRow = $loginData[$larrC]['username'].' - '.$loginData[$larrC]['ip'].' - '.$loginData[$larrC]['os'].' - '.$loginData[$larrC]['browser'];
+				$thisRow = $loginData[$larrC]['username'].' - '.$loginData[$larrC]['ip'].' - '.$loginData[$larrC]['time'].' - '.$loginData[$larrC]['os'].' - '.$loginData[$larrC]['browser'];
 				$loginArr[$larrC] = $thisRow;
 				$larrC++;
 			}
-			$this->insertBox('Logins','5 Most Recent Logins (User - IP - OS - Browser)',number_format($loginRows),'Total Logins',$loginArr);
+			$this->insertBox('Logins','5 Most Recent Logins (User - IP - Time - OS - Browser)',number_format($loginRows),'Total Logins',$loginArr);
 			$getLogins = null;
 			$loginArr = null;
 			$loginData = null;

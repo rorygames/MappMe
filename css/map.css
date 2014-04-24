@@ -80,6 +80,7 @@ rorywebdev.com
 	-ms-transition:opacity 0.3s ease;
 	-o-transition:opacity 0.3s ease;
 	opacity:0;
+	z-index:200;
 }
 
 #mm-d-bg.open{
